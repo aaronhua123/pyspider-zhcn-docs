@@ -174,7 +174,7 @@ SQLite数据库 和 计算器转储文件 的保存路径
       --scheduler-cls TEXT     scheduler class to be used.
       --help                   Show this message and exit.  
     ```      
-###### --scheduler-cls
+#### --scheduler-cls
 设置选项去使用自定义的调度类
 
 #### phantomjs
@@ -189,7 +189,7 @@ SQLite数据库 和 计算器转储文件 的保存路径
       --auto-restart TEXT    auto restart phantomjs if crashed
       --help                 Show this message and exit.
     ```
-###### ARGS
+#### ARGS
 添加args到phantomjs命令行
 
 #### fetcher
@@ -259,7 +259,7 @@ SQLite数据库 和 计算器转储文件 的保存路径
       ```
       
       
-####### --cdn
+##### --cdn
 JS/CSS 基于 CDN 服务的。URL必须兼容[cdnjs](https://cdnjs.com/)
 
 ##### --fetcher-rpc

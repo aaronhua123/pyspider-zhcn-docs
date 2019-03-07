@@ -101,7 +101,8 @@ def on_start(self):
 ##### 数据
 身体附加到请求。如果提供了字典，则将进行表单编码。
 
-```def on_start(self):
+```
+def on_start(self):
     self.crawl('http://httpbin.org/post', callback=self.callback,
                method='POST', data={'a': 123, 'b': 'c'})
 ```
@@ -132,10 +133,12 @@ def on_start(self):
 ##### 代理
 username:password@hostname:port要使用的代理服务器，目前仅支持http代理。
 
+```
 class Handler(BaseHandler):
     crawl_config = {
         'proxy': 'localhost:8080'
     }
+```
 Handler.crawl_config可用于proxy为整个项目设置代理。
 
 ##### ETAG
@@ -150,6 +153,7 @@ Handler.crawl_config可用于proxy为整个项目设置代理。
 ##### js_script
 在页面加载之前或之后运行的JavaScript，应该被类似的函数包装function() { document.write("binux"); }。
 
+```
 def on_start(self):
     self.crawl('http://www.example.org/', callback=self.callback,
                fetch_type='js', js_script='''
@@ -158,6 +162,7 @@ def on_start(self):
                    return 123;
                }
                ''')
+```
 该脚本将页面滚动到底部。函数中返回的值可以通过捕获Response.js_script_result。
 
 ##### js_run_at
@@ -172,21 +177,26 @@ def on_start(self):
 ##### 保存
 一个对象传递给回调方法，可以通过访问response.save。
 
+```
 def on_start(self):
     self.crawl('http://www.example.org/', callback=self.callback,
                save={'a': 123})
 
 def callback(self, response):
     return response.save['a']
+```
 123 将被退回 callback
 
 ##### 任务id
 唯一id用于标识任务，默认是URL的MD5检查码，可以通过方法覆盖 def get_taskid(self, task)
 
+```
 import json
 from pyspider.libs.utils import md5string
 def get_taskid(self, task):
     return md5string(task['url']+json.dumps(task['fetch'].get('data', '')))
+
+```
 默认情况下，只有url是md5 -ed作为taskid，上面的代码作为taskid的data一部分添加了POST请求。
 
 ##### 强制性升级

@@ -11,7 +11,7 @@
 	* [脚本环境](jiagou/jiagou4.md)
 	* [使用结果](jiagou/jiagou5.md)
 * [API](api)
-    * [APIself.crawl](api/api1.md)
+    * [self.crawl](api/api1.md)
 	* [响应](api/api2.md)
 	* [self.send_messag](api/api3.md)
 	* [@catch_status_code_errer](api/api4.md)

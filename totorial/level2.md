@@ -53,6 +53,7 @@ HTTP是交换或传输超文本的协议。我们在上一篇文章中使用过�
 
 http://example.com/的典型HTTP请求消息如下所示：
 
+```
     GET / HTTP/1.1
     Host: example.com
     Connection: keep-alive
@@ -64,6 +65,7 @@ http://example.com/的典型HTTP请求消息如下所示：
     Accept-Language: zh-CN,zh;q=0.8
     If-None-Match: "359670651"
     If-Modified-Since: Fri, 09 Aug 2013 23:54:35 GMT
+```
     
    
 * 第一行包含HTTP方法，路径和HTTP版本
