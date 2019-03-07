@@ -49,7 +49,7 @@
 * `def index_page(self, response)`会获得一个所有 Response* 对象. `response.doc*`是一个pyquery对象（有jQuery-like API去选择提取元素的信息）。
 * `def detail_page(self, response)`返回一个字段对象作为结果。这个结果默认会被`resultdb`捕捉。你也可以重写`on_result(self, result)`方法，去管理采集的结果。
 
-##### 更多的内容你需要知道的
+#### 更多的内容你需要知道的
 
 * `@every(minutes=24*60, seconds=0)* `是一个助手去告诉调度器`on_start`方法每天都要运行。
 * `@config(age=10 * 24 * 60 * 60)* `指定了`self.crawl`默认的age参数。页面类型是`index_page`（当`callback=self.index_page`的时候）

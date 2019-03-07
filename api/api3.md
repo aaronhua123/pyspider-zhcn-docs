@@ -1,5 +1,5 @@
 ### self.send_message
-#####self.send_message（project，msg，[url]）
+####self.send_message（project，msg，[url]）
 将消息发送到其他项目。可以通过def on_message(self, project, message)回调接收。
 
 * project - 其他项目名称
@@ -18,7 +18,7 @@
     def on_message(self, project, msg):
         return msg
 ```
-##### pyspider send_message [OPTIONS] PROJECT MESSAGE
+#### pyspider send_message [OPTIONS] PROJECT MESSAGE
 您也可以从命令行发送消息。
 
 ```
@@ -30,5 +30,5 @@
       --scheduler-rpc TEXT  xmlrpc path of scheduler
       --help                Show this message and exit.
 ```
-##### def on_message（自我，项目，消息）
+#### def on_message（自我，项目，消息）
 从其他项目接收消息

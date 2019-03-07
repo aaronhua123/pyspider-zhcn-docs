@@ -31,7 +31,7 @@
       --help                   Show this message and exit.
     ```
       
-##### --config
+#### --config
 配置文件是一个（带有（全局或者子命令）的配置值）JSON文件
 
 ```
@@ -48,10 +48,10 @@
     }
     
 ```
-##### --queue-maxsize
+#### --queue-maxsize
 队列大小限制，0就是没有限制
 
-##### --taskdb, --projectdb, --resultdb
+#### --taskdb, --projectdb, --resultdb
       ```
         mysql:
         mysql+type://user:passwd@host:port/database
@@ -77,10 +77,10 @@
       ```
         
         
-##### --phantomjs-proxy
+#### --phantomjs-proxy
 phantomjs代理地址，你需要一个安装包和运行phantomjs代理用命令：`pyspider phantomjs`
 
-##### --data-path
+#### --data-path
 SQLite数据库 和 计算器转储文件 的保存路径
 
 #### all
@@ -212,7 +212,7 @@ SQLite数据库 和 计算器转储文件 的保存路径
     
     
       
-##### --proxy
+#### --proxy
 默认的代理使用fetcher，选项可以被self.crawl重写。
 
 ####  processor
@@ -259,10 +259,10 @@ SQLite数据库 和 计算器转储文件 的保存路径
       ```
       
       
-##### --cdn
+#### --cdn
 JS/CSS 基于 CDN 服务的。URL必须兼容[cdnjs](https://cdnjs.com/)
 
-##### --fetcher-rpc
+#### --fetcher-rpc
 fetcher XMLRPC 服务器 的 XML-RPC 的路径 URI。如果不设置,使用使用 Fetcher 实例.
 
 #### --need-auth

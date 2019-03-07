@@ -76,7 +76,7 @@ http://example.com/的典型HTTP请求消息如下所示：
 
 ![](./wangluo.png)
 在大多数情况下，您需要的最后一件事是从网络面板复制正确的URL +方法+标题+正文。
-##### cURL命令
+#### cURL命令
 
 self.crawl支持cURL命令作为发出HTTP请求的参数。它将解析命令中的参数并将其用作fetch参数。
 
