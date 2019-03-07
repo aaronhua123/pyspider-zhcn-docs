@@ -37,9 +37,11 @@
 
 修改抓取`crawl`的url在`on_start`回调中：
 
+    ```
     @every(minutes=24 * 60)
     def on_start(self):
         self.crawl('http://www.imdb.com/search/title?count=100&title_type=feature,tv_series,tv_movie&ref_=nv_ch_mm_1', callback=self.index_page)
+    ```
 * `self.crawl`会取得页面然后调用`callback`方法去解析响应。
 * `@every`装饰器表示，`on_start`将会每天运行 ，去确保不会错过任何新的电影。
 
@@ -55,12 +57,14 @@
 #### 找到电影
 正如你所看到的，样本处理程序已经找到1900+条连接在页面上。一个提取电影页面的方式是使用正则表达式：
 
+   ```
     import re
     ...
     def index_page(self, response):
         for each in response.doc('a[href^="http"]').items():
             if re.match("http://www.imdb.com/title/tt\d+/$", each.attr.href):
                 self.crawl(each.attr.href, callback=self.detail_page)
+   ```
 * `callback` 是 `self.detail_page` 在这里使用别的回调方法来解析。       
 谨记，你可以使用强大的python或者你所熟悉的功能来解析信息。但是，使用CSS选择器是推荐的。
 
@@ -81,26 +85,32 @@ pyspider 提供了一个工具叫做CSS选择器助手，它可以简化生成�
 
 点击下一步"Next》"在页面上然后添加选择的路径到你的代码上：
 
+    ```
     def index_page(self, response):
             for each in response.doc('a[href^="http"]').items():
                 if re.match("http://www.imdb.com/title/tt\d+/$", each.attr.href):
                     self.crawl(each.attr.href, callback=self.detail_page)
             self.crawl(response.doc('#right a').attr.href, callback=self.index_page)
+    ```
 再一次点击 run同时移动到下一页，我们可以看到"《Prev"  "Next》"有相同的选择路径。当我们使用上述代码的时候，会使用“Prev”而不是“Next”。一个解决方法是都选择他们。
 
+    ```
     self.crawl([x.attr.href for x in response.doc('#right a').items()], callback=self.index_page)
+    ```
     
 #### 解析信息
 再次点击run然后跳到详情页
 添加你需要获取的结果到字典中，使用CSS选择器助手重复的获取值：
-
-    def detail_page(self, response):
+```
+def detail_page(self, response):
             return {
                 "url": response.url,
                 "title": response.doc('.header > [itemprop="name"]').text(),
                 "rating": response.doc('.star-box-giga-star').text(),
                 "director": [x.text() for x in response.doc('[itemprop="director"] span').items()],
             }
+```
+    
 注意，CSS选择器助手可能不总是工作。你可以手写选择器路径使用Chrome的开发工具。
 ![inspect_element.png](inspect_element.png)
 

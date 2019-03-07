@@ -35,6 +35,7 @@
 
 例如，默认retry_delay声明如：
 
+  ```
     class MyHandler(BaseHandler):
         retry_delay = {
             0: 30,
@@ -43,3 +44,4 @@
             3: 12*60*60,
             '': 24*60*60
         }
+  ```

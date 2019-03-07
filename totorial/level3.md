@@ -12,6 +12,7 @@
 #### 使用PhantomJS
 当连接PhantomJS的pyspider时，您可以通过添加参数fetch_type='js'来启用此功能self.crawl。我们使用PhantomJS来抓取http://www.twitch.tv/directory/game/Dota%202的频道列表，该列表 加载了我们在第2级中讨论过的AJAX ：
 
+    ```
     class Handler(BaseHandler):
         def on_start(self):
             self.crawl('http://www.twitch.tv/directory/game/Dota%202',
@@ -26,6 +27,7 @@
                     "name": x('.info a').text(),
                 } for x in response.doc('.stream.item').items()]
             }
+    ```
 我使用了一些API来处理流列表。您可以从PyQuery完整API中找到完整的API参考
 
 #### 在页面上运行JavaScript
@@ -33,6 +35,7 @@
 
 要抓取尽可能多的图像，我们可以使用js_script参数来设置一些函数包装的JavaScript代码来模拟滚动操作：
 
+    ```
     class Handler(BaseHandler):
         def on_start(self):
             self.crawl('http://www.pinterest.com/categories/popular/',
@@ -51,6 +54,7 @@
                     "author": x('.creditName').text(),
                 } for x in response.doc('.item').items() if x('.pinImg')]
             }
+    ```
 页面加载后可以执行脚本（可以通过js_run_at参数更改）
 我们在页面加载后滚动一次，您可以使用滚动多次setTimeout。在超时到达之前，PhantomJS将获取尽可能多的项目。
 

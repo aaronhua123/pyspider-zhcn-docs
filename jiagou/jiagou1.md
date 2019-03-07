@@ -36,11 +36,13 @@ Fetcher负责获取网页，然后将结果发送给处理器。对于灵活的�
 ###### Phantomjs Fetcher
 Phantomjs Fetcher就像代理一样工作。它连接到一般的Fetcher，在启用JavaScript的情况下获取和渲染页面，将一般HTML输出回Fetcher：
 
+    ```
     scheduler -> fetcher -> processor
                     |
                 phantomjs
                     |
                  internet
+    ```
 ###### 处理器
 处理器负责运行用户编写的脚本来解析和提取信息。您的脚本在无限制的环境中运行。虽然我们有各种工具（如PyQuery）可供您提取信息和链接，但您可以使用任何想要处理响应的内容。您可以参考脚本环境和API参考以获取有关脚本的更多信息。
 
