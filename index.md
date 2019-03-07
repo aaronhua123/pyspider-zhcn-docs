@@ -14,6 +14,7 @@
 发布日志: [https://github.com/binux/pyspider/releases](https://github.com/binux/pyspider/releases)
 
 #### 简单的演示
+```
     from pyspider.libs.base_handler import *
     class Handler(BaseHandler):
         crawl_config = {
@@ -33,6 +34,7 @@
                 "url": response.url,
                 "title": response.doc('title').text(),
             }
+```
 #### 例子
 
 安装

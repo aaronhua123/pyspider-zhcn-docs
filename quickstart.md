@@ -22,6 +22,7 @@
 **警告**：脚本编辑界面`WebUI`，是对外开放的。这会对你的电脑造成不必要的风险，请在内网下使用它。
 
 #### 编写第一个脚本
+```
     from pyspider.libs.base_handler import *
     class Handler(BaseHandler):
         crawl_config = {
@@ -42,6 +43,7 @@
                 "url": response.url,
                 "title": response.doc('title').text(),
             }
+```
 * `def on_start(self)` 是脚本的入口。当你点击表盘上的`run`按钮的时候，将会运行它。
 * `self.crawl(url, callback=self.index_page)*` 这是一个最重要的API方法。它将会添加新的任务到采集队列。通过`self.crawl`的参数，指定更多的选项。     
 * `def index_page(self, response)`会获得一个所有 Response* 对象. `response.doc*`是一个pyquery对象（有jQuery-like API去选择提取元素的信息）。
