@@ -4,6 +4,7 @@
 你可以获得命令行帮助通过`pyspider --help`和`pyspider all --help`来获得帮助。
 全局的选项适用于所有的子命令
 
+    ```
     Usage: pyspider [OPTIONS] COMMAND [ARGS]...
     
       A powerful spider system in python.
@@ -28,10 +29,12 @@
       --data-path TEXT         data dir path
       --version                Show the version and exit.
       --help                   Show this message and exit.
+    ```
       
 ##### --config
 配置文件是一个（带有（全局或者子命令）的配置值）JSON文件
 
+```
     {
       "taskdb": "mysql+taskdb://username:password@host:port/taskdb",
       "projectdb": "mysql+projectdb://username:password@host:port/projectdb",
@@ -44,10 +47,12 @@
       }
     }
     
+```
 ##### --queue-maxsize
 队列大小限制，0就是没有限制
 
 ##### --taskdb, --projectdb, --resultdb
+      ```
         mysql:
         mysql+type://user:passwd@host:port/database
     sqlite:
@@ -69,6 +74,7 @@
     
     type:
         should be one of `taskdb`, `projectdb`, `resultdb`.
+      ```
         
         
 ##### --phantomjs-proxy
@@ -78,6 +84,7 @@ phantomjs代理地址，你需要一个安装包和运行phantomjs代理用命�
 SQLite数据库 和 计算器转储文件 的保存路径
 
 #### all
+    ```
     Usage: pyspider all [OPTIONS]
     
       Run all the components in subprocess or thread
@@ -89,8 +96,10 @@ SQLite数据库 和 计算器转储文件 的保存路径
       --run-in [subprocess|thread]  run each components in thread or subprocess.
                                     always using thread for windows.
       --help                        Show this message and exit.
+    ```
       
 #### one
+    ```
     Usage: pyspider one [OPTIONS] [SCRIPTS]...
     
       One mode not only means all-in-one, it runs every thing in one process
@@ -100,6 +109,7 @@ SQLite数据库 和 计算器转储文件 的保存路径
       -i, --interactive  enable interactive mode, you can choose crawl url.
       --phantomjs        enable phantomjs, will spawn a subprocess for phantomjs
       --help             Show this message and exit.
+    ```
 **注意：WebUI不是在one模式下运行的**
 
 在one模式下，结果默认是写在标准输出上。你可以捕捉他们通过pyspider one > result.txt
@@ -114,6 +124,7 @@ SQLite数据库 和 计算器转储文件 的保存路径
 #### -i,--interactive
 使用交互式的模型，pyspider将会启动一个交互式的控制台请求，那个将要在下一个进程循环中做的。在控制台，你可以使用：
 
+        ```
         crawl(url, project=None, **kwargs)
         Crawl given url, same parameters as BaseHandler.crawl
         
@@ -125,9 +136,11 @@ SQLite数据库 和 计算器转储文件 的保存路径
         
         quit_pyspider()
         Close pyspider
+        ```
 你可以使用`pyspider.libs.utils.python_console()`去打开一个交互式控制台，在你的脚本中。
 
 #### bench
+    ```
     Usage: pyspider bench [OPTIONS]
     
       Run Benchmark test. In bench mode, in-memory sqlite database is used
@@ -142,7 +155,9 @@ SQLite数据库 和 计算器转储文件 的保存路径
       --total INTEGER               total url in test page
       --show INTEGER                show how many urls in a page
       --help                        Show this message and exit.
+    ```
 #### scheduler
+    ```
     Usage: pyspider scheduler [OPTIONS]
 
       Run Scheduler, only one scheduler is allowed.
@@ -157,11 +172,13 @@ SQLite数据库 和 计算器转储文件 的保存路径
       --active-tasks INTEGER   active log size
       --loop-limit INTEGER     maximum number of tasks due with in a loop
       --scheduler-cls TEXT     scheduler class to be used.
-      --help                   Show this message and exit.        
+      --help                   Show this message and exit.  
+    ```      
 ###### --scheduler-cls
 设置选项去使用自定义的调度类
 
 #### phantomjs
+    ```
     Usage: run.py phantomjs [OPTIONS] [ARGS]...
 
       Run phantomjs fetcher if phantomjs is installed.
@@ -171,10 +188,12 @@ SQLite数据库 和 计算器转储文件 的保存路径
       --port INTEGER         phantomjs port
       --auto-restart TEXT    auto restart phantomjs if crashed
       --help                 Show this message and exit.
+    ```
 ###### ARGS
 添加args到phantomjs命令行
 
 #### fetcher
+    ```
     Usage: pyspider fetcher [OPTIONS]
 
       Run Fetcher.
@@ -189,11 +208,15 @@ SQLite数据库 和 计算器转储文件 的保存路径
       --timeout TEXT          default fetch timeout
       --fetcher-cls TEXT      Fetcher class to be used.
       --help                  Show this message and exit.
+    ```
+    
+    
       
 ##### --proxy
 默认的代理使用fetcher，选项可以被self.crawl重写。
 
 ####  processor
+   ```
     Usage: pyspider processor [OPTIONS]
 
       Run Processor.
@@ -201,6 +224,7 @@ SQLite数据库 和 计算器转储文件 的保存路径
     Options:
       --processor-cls TEXT  Processor class to be used.
       --help                Show this message and exit.
+   ```
       
       
 #### result_worker
@@ -213,6 +237,8 @@ SQLite数据库 和 计算器转储文件 的保存路径
       --help             Show this message and exit.
       
 #### webui
+
+    ```
     Usage: pyspider webui [OPTIONS]
     
       Run WebUI
@@ -230,6 +256,7 @@ SQLite数据库 和 计算器转储文件 的保存路径
       --need-auth            need username and password
       --webui-instance TEXT  webui Flask Application instance to be used.
       --help                 Show this message and exit.
+      ```
 ####### --cdn
 JS/CSS 基于 CDN 服务的。URL必须兼容[cdnjs](https://cdnjs.com/)
 
